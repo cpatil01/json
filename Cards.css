@@ -1,0 +1,35 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.card1 {
+  width: 250px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(198, 194, 194, 0.984);
+  text-align: center;
+  background-color: #ffffff;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card1:hover {
+  transform: scale(1.05);
+}
+
+.card1 img {
+  border-radius: 10px;
+  height: auto;
+  max-width: 100%;
+}
+
+.card1 h3 {
+  font-size: 16px;
+  font-family: 'MyVoisFontBold';
+}
+
+.card1 p {
+  font-size: 14px;
+  margin: 10px 0;
+}

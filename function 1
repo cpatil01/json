@@ -1,0 +1,28 @@
+import React from 'react';
+import './Cards.css';
+import cardData from './cardData.json';
+import card_service from '../../images/card_service.png';
+import card_manage from '../../images/card_manage.png';
+import card_empowered from '../../images/card_empowered.png';
+import card_change from '../../images/card_change.png';
+
+function Card() {
+  return (
+    <div className="card-container">
+      {cardData.map((card) => (
+        <div key={card.id} className="card1">
+          <img src={getImagePath(card.imageSrc)} alt={card.altText} />
+          <h3>{card.heading}</h3>
+          <p>{card.content}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function getImagePath(imageSrc) {
+  // Add logic to resolve image paths if needed
+  return imageSrc;
+}
+
+export default Card;

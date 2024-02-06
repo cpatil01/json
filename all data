@@ -1,0 +1,68 @@
+{
+  "navbar": {
+    "welcomeMessage": "WELCOME TO _VOIS MARKETPLACE",
+    "icons": [
+      {
+        "src": "{icon_heartbeat}",
+        "alt": "Logo",
+        "text": "_VOIS Marketplace 35"
+      },
+      {
+        "src": "{icon_downArrow}",
+        "alt": "Logo",
+        "text": "(45) Selected market: _VOIS Change"
+      }
+    ]
+  },
+  "footer": {
+    "buttons": [
+      "Admin Center",
+      "Release Notes"
+    ],
+    "copyright": "&copy; 2023 _VOIS Limited"
+  },
+  "successStories": [
+    {
+      "image": "{successStory_1}",
+      "text": "ProSales Process Automation We have together with Vodafone Spain to automate some activities that were performed manually"
+    },
+    {
+      "image": "{successStory_2}",
+      "text": "Savings of $1.4 million a year Supply chain Management Achieved saving $1.4 million a year by migrating activities to _VOIS. The team"
+    },
+    {
+      "image": "{successStory_3}",
+      "text": "How to derive customer satisfaction Supply Chain management 20 local markets can derive Customer Experience Excellence thanks"
+    }
+  ],
+  "cards": [
+    {
+      "image": "{card_service}",
+      "alt": "Card_Image",
+      "heading": "Service Catalogue",
+      "content": "A comprehensive list of all our services. Browse through the list, or search and select the service."
+    },
+    {
+      "image": "{card_manage}",
+      "alt": "Card_Image",
+      "heading": "Manage services",
+      "content": "Manage your service: buy new or add more of our services for your market."
+    },
+    {
+      "image": "{card_empowered}",
+      "alt": "Card_Image",
+      "heading": "Empowered People",
+      "content": "Readying our people for their future jobs"
+    },
+    {
+      "image": "{card_change}",
+      "alt": "Card_Image",
+      "heading": "The _VOIS of Change",
+      "content": "Powering a digitally enabled, more inclusive and sustainable future"
+    }
+  ],
+  "imageCarousel": {
+    "image": "{images[currentImageIndex]}",
+    "message": "Marketplace is your one stop-solution, allowing you to see your services order new services and view essential information about _VOIS."
+  }
+}

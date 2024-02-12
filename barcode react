@@ -1,0 +1,9 @@
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Barcode = require('react-barcode');
+
+const BarcodeComponent = () => {
+  return <Barcode value="http://github.com/kciter" />;
+};
+
+export default BarcodeComponent;

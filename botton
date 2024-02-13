@@ -1,0 +1,38 @@
+import React, { useState } from 'react';
+import Barcode from 'react-barcode';
+
+function BarcodeGenerator() {
+  const [barcodeValue, setBarcodeValue] = useState('');
+  const [generatedBarcode, setGeneratedBarcode] = useState(null);
+
+  const generateBarcode = () => {
+    // Generate the barcode only if the barcodeValue is not empty
+    if (barcodeValue.trim() !== '') {
+      setGeneratedBarcode(<Barcode value={barcodeValue} />);
+    } else {
+      // Reset the generated barcode if the input value is empty
+      setGeneratedBarcode(null);
+    }
+  };
+
+  const handleInputChange = (event) => {
+    setBarcodeValue(event.target.value);
+  };
+
+  return (
+    <div className="app">
+      <h1>Barcode Generator</h1>
+      <input
+        type="text"
+        placeholder="Enter barcode value"
+        value={barcodeValue}
+        onChange={handleInputChange}
+      />
+      <br />
+      <button onClick={generateBarcode}>Generate</button>
+      <div>{generatedBarcode}</div>
+    </div>
+  );
+}
+
+export default BarcodeGenerator;

@@ -1,0 +1,130 @@
+import React, { useState } from 'react';
+import { Menu, Transition } from '@headlessui/react';
+import { Fragment } from 'react';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
+
+function RaiseTicket() {
+    const [selectedAsset, setSelectedAsset] = useState('Select Asset');
+    const [selectedReason, setSelectedReason] = useState('Select Reason');
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+    const handleOpenPopup = () => {
+        setIsPopupOpen(true);
+    };
+
+    const handleClosePopup = () => {
+        setIsPopupOpen(false);
+    };
+
+    const handleAssetChange = (value) => {
+        setSelectedAsset(value);
+    };
+
+    const handleReasonChange = (value) => {
+        setSelectedReason(value);
+    };
+
+    const isSubmitEnabled = selectedAsset !== 'Select Asset' && selectedReason !== 'Select Reason';
+
+    const handleSubmit = () => {
+        // Handle submission logic here
+        // For now, just close the popup
+        handleOpenPopup();
+    };
+
+    return (
+        <div className="flex justify-center items-center h-screen">
+            <div className="bg-white w-[518px] h-[444px] top-[162px] left-[381px] rounded-md flex flex-col justify-center items-center space-y-6 shadow-lg">
+                <div className="w-3/4">
+                    <CustomDropdown value={selectedAsset} onChange={handleAssetChange} label="Select Asset">
+                        <option value="MacBook Pro">MacBook Pro</option>
+                        <option value="Lenovo thinkpad">Lenovo thinkpad</option>
+                        <option value="Other">Other</option>
+                    </CustomDropdown>
+                    <h3 className='text-center'>e.g. MacBook Pro | A 3 F K S T</h3>
+                </div>
+                <div className="w-3/4">
+                    <CustomDropdown value={selectedReason} onChange={handleReasonChange} label="Select Reason">
+                        <option value="My asset is not listed">My asset is not listed</option>
+                        <option value="Asset Lost/Stolen">Asset Lost/Stolen</option>
+                        <option value="Other">Other</option>
+                    </CustomDropdown>
+                    <h3 className='text-center'>e.g. My asset is not listed</h3>
+                </div>
+                <button
+                    onClick={handleSubmit}
+                    className={`bg-red-500 w-3/4 text-white px-4 py-2 rounded-md hover:bg-red-700 ${isSubmitEnabled ? '' : 'opacity-50 cursor-not-allowed'}`}
+                    disabled={!isSubmitEnabled}
+                >
+                    Submit
+                </button>
+                {isPopupOpen && (
+                    <div className="fixed top-0 left-0 z-50 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
+                        <div className="bg-white w-80 h-60 px-6 py-8 rounded-md shadow-md text-center">
+                            <h3 className='font-bold pt-8 pb-4'>Ticket Raised</h3>
+                            <p className='pb-4'>A ticket has been successfully raised for the asset</p>
+                            <button
+                                onClick={handleClosePopup}
+                                className="hover:text-red-700"
+                            >
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                            <div className="mt-4">
+                                <button
+                                    onClick={handleClosePopup}
+                                    className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-700"
+                                >
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}
+
+function CustomDropdown({ value, onChange, label, children }) {
+    return (
+        <Menu as="div" className="relative inline-block text-left">
+            <div>
+                <Menu.Button className="inline-flex justify-between w-full rounded-md bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                    <span>{label}</span>
+                    <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
+                </Menu.Button>
+            </div>
+
+            <Transition
+                as={Fragment}
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+            >
+                <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div className="py-1">
+                        {React.Children.map(children, (child) => (
+                            <Menu.Item>
+                                {({ active }) => (
+                                    <button
+                                        onClick={() => onChange(child.props.value)}
+                                        className={`block px-4 py-2 text-sm w-full text-left ${active ? 'bg-gray-100 text-gray-900' : 'text-gray-700'}`}
+                                    >
+                                        {child.props.children}
+                                    </button>
+                                )}
+                            </Menu.Item>
+                        ))}
+                    </div>
+                </Menu.Items>
+            </Transition>
+        </Menu>
+    );
+}
+
+export default RaiseTicket;

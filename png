@@ -13,17 +13,16 @@ export default Banner;
 
 
 
-const Banner = (src) => {
+import Banner from '../components/Banner/banner';
+import EmployeeHome from '../components/Employee/EmployeeHome';
+import Rectangle from '../assets/BannerImg.png';
+const Home = () => {
 	return (
-		<div className="w-full">
-			<img
-				className="w-full h-auto max-lg:h-[193px] max-sm:h-[136px] object-cover"
-				// src={Rectangle}
-				// alt="BannerImg.png"
-				src={src}	
-				
-			/>
-		</div>
+		<>
+			<Banner src={Rectangle} />
+			<EmployeeHome />
+		</>
 	);
 };
-export default Banner;
+
+export default Home;

@@ -1,0 +1,29 @@
+const Banner = (src) => {
+	return (
+		<div className="w-full">
+			<img
+				className="w-full h-auto max-lg:h-[193px] max-sm:h-[136px] object-cover"
+				src={src}	
+				
+			/>
+		</div>
+	);
+};
+export default Banner;
+
+
+
+const Banner = (src) => {
+	return (
+		<div className="w-full">
+			<img
+				className="w-full h-auto max-lg:h-[193px] max-sm:h-[136px] object-cover"
+				// src={Rectangle}
+				// alt="BannerImg.png"
+				src={src}	
+				
+			/>
+		</div>
+	);
+};
+export default Banner;

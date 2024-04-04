@@ -83,9 +83,9 @@ const ComboBox = ({
                                 filteredOptions.map((option, index) => (
                                     <Fragment key={option.value}>
                                         <Combobox.Option
-                                            className={({ active, selected }) =>
-                                                `${selected ? 'bg-red-500 text-white' : 'bg-white'} text-base block w-full px-4 py-2 text-text_02 transition duration-300`
-                                            }
+                                            className={`text-base block w-full px-4 py-2 text-text_02 transition duration-300 ${
+                                                selected === option ? 'bg-red-500 text-white' : 'bg-white'
+                                            }`}
                                             value={option}
                                         >
                                             {({ selected }) => (

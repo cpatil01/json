@@ -84,7 +84,7 @@ const ComboBox = ({
                                     <Fragment key={option.value}>
                                         <Combobox.Option
                                             className={`text-base block w-full px-4 py-2 text-text_02 transition duration-300 ${
-                                                selected === option ? 'bg-red-500 text-white' : 'bg-white'
+                                                selectedOption && selectedOption.value === option.value ? 'bg-red-500 text-white' : 'bg-white'
                                             }`}
                                             value={option}
                                         >

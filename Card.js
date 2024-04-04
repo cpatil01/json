@@ -20,17 +20,16 @@ const ComboBox = ({
         setQuery(event.target.value);
     };
 
-    // Memoize the onChangeValue function
     const memoizedOnChangeValue = useCallback(
         (option) => {
-            onChangeValue(option);
+            option && onChangeValue(name, option.value, { shouldValidate: true });
         },
-        [onChangeValue]
+        [name, onChangeValue]
     );
 
     const handleOptionChange = (option) => {
         setSelected(option);
-        memoizedOnChangeValue(option); // Use memoized onChangeValue
+        memoizedOnChangeValue(option);
         setIsOpen(false);
     };
 
@@ -51,7 +50,7 @@ const ComboBox = ({
                 <div className="relative mt-1">
                     <div
                         className={`relative shadow appearance-none py-2 px-3 text-text_02 leading-tight text-left w-full sm:w-full md:w-3/4 lg:w-full rounded-md border focus:outline-none border-brd_g_400 text-sm font-medium hover:border-vfAquaBlue focus:shadow-outline focus:border-vfAquaBlue focus:border-transparent transition duration-300 ${disabled ? 'bg-brd_g_200 text-brd_g_400 cursor-not-allowed' : 'bg-vfWhite'} ${
-                            errors[name] && !selected
+                            errors[name]
                                 ? 'border-support_01'
                                 : 'border-brd_g_400 hover:border-vfAquaBlue'
                         }`}
@@ -85,9 +84,7 @@ const ComboBox = ({
                                     <Fragment key={option.value}>
                                         <Combobox.Option
                                             className={({ active, selected }) =>
-                                                `${
-                                                    selected ? 'bg-Select_06' : 'bg-vfWhite'
-                                                } text-base block w-full px-4 py-2 text-text_02 transition duration-300`
+                                                `${selected ? 'bg-red-500 text-white' : 'bg-white'} text-base block w-full px-4 py-2 text-text_02 transition duration-300`
                                             }
                                             value={option}
                                         >
@@ -97,7 +94,6 @@ const ComboBox = ({
                                                 </span>
                                             )}
                                         </Combobox.Option>
-                                        
                                         {index !== filteredOptions.length - 1 && <hr className="h-px  rounded ml-5 mr-5 bg-brd_g_300" />}
                                     </Fragment>
                                 ))
@@ -106,7 +102,7 @@ const ComboBox = ({
                     </Transition>
                 </div>
             </Combobox>
-            {errors[name] && !selected && (
+            {errors && errors[name] && (
                 <p className="text-support_01 text-xs">{errors[name].message}</p>
             )}
         </div>
